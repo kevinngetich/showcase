@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Feeds
+{% endblock %}
+
+{% block content %}
+            <div class="col-lg-6">
+                {% if all_articles %}
+                    {% for article in all_articles %}
+
+                        <div class="card card-main">
+                            <img class="card-img-top" src="{{ article.image.url }}" alt="Card image cap">
+                            <div class="card-body">
+                              <h3 class="card-title">{{ article.article_title }}</h3>
+                              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                              <p class="card-text card-info"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              &nbsp;
+                              <a href="{% url 'article:details' article.id %}" class="btn btn-default">Read Article...</a>
+                            </div>
+                        </div>
+                        &nbsp;
+                        &nbsp;
+                    {% endfor %}
+                {% else %}
+                    <h1>There are no articles to view</h1>
+                {% endif %}
+            </div>
+{% endblock %}
+
